@@ -13,9 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".", // 기본 경로를 프로젝트 최상단으로 설정
+    "baseUrl": ".",
     "paths": {
-      // 각 폴더에 따른 경로를 커스텀하게 지정
       "~/*": ["./*"],
       "@pages/*": ["./pages/*"],
       "@components/*": ["./components/*"],
