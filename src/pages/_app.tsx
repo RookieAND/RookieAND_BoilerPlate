@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "@styles/globalStyle";
 import { theme } from "@styles/theme";
+import "@assets/fonts/font.css";
 
 import { useState } from "react";
 import { QueryClientProvider, QueryClient } from "react-query";
