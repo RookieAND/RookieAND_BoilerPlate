@@ -1,13 +1,16 @@
 {
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "extends": [
-    "plugin:react/recommended",
+    "airbnb",
     "airbnb-typescript",
+    "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
   "root": true,
@@ -16,7 +19,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 12,
+    "ecmaVersion": "lastest",
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
