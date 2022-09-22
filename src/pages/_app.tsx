@@ -1,27 +1,30 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import "@styles/global.css";
+
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "@styles/globalStyle";
+import { theme } from "@styles/theme";
 
 import { useState } from "react";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { RecoilRoot } from "recoil";
 
-function InitApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <Head>
-          <title>RookieAND's BoilerPlate</title>
-          <meta charSet="utf-8" />
-          <meta name="description" content="My first Personal BoilerPlate" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="theme-color" content="#00917C" />
+          <title>RookieAND's BoilerPlate</title>
         </Head>
-        <Component {...pageProps} />
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </RecoilRoot>
     </QueryClientProvider>
   );
 }
 
-export default InitApp;
+export default MyApp;
