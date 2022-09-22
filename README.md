@@ -1,6 +1,6 @@
 # RookieAND_BoilerPlate
 
-Typescript, Webpack, Next.js를 지원하는 개발 환경
+Typescript, Next.js를 지원하는 Webpacks 개발 환경
 
 ## Description [프로젝트 소개]
 

@@ -16,12 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@pages/*": ["./pages/*"],
-      "@components/*": ["./components/*"],
-      "@assets/*": ["./assets/*"],
-      "@utils/*": ["./utils/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@styles/*": ["./styles/*"]
+      "@pages/*": ["src/pages/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"]
     },
     "incremental": true
   },

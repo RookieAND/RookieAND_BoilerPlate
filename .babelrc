@@ -11,13 +11,13 @@
         "root": ["."],
         "alias": {
           "~": ["./*"],
-          "@pages/*": ["./pages/*"],
-          "@components/*": ["./components/*"],
-          "@api/*": ["./api/*"],
-          "@assets/*": ["./assets/*"],
-          "@utils/*": ["./utils/*"],
-          "@hooks/*": ["./hooks/*"],
-          "@styles/*": ["./styles/*"]
+          "@pages/*": ["./src/pages/*"],
+          "@components/*": ["./src/components/*"],
+          "@api/*": ["./src/api/*"],
+          "@assets/*": ["./src/assets/*"],
+          "@utils/*": ["./src/utils/*"],
+          "@hooks/*": ["./src/hooks/*"],
+          "@styles/*": ["./src/styles/*"]
         },
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
