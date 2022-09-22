@@ -1,13 +1,17 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
 
 import App from "./App";
 import { QueryClientProvider, QueryClient } from "react-query";
 
 const queryClient = new QueryClient();
+const rootElm = document.getElementById("root") as HTMLElement;
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(rootElm);
+root.render(
   <QueryClientProvider client={queryClient}>
-    <App />
-  </QueryClientProvider>,
-  document.getElementById("root")
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </QueryClientProvider>
 );
