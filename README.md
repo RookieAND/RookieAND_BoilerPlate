@@ -13,6 +13,12 @@ Typescript, Next.js 개발환경을 Webpack 으로 직접 구축해보면서
 - React, Next.js, prettier, eslint
 - styled-component, axios, react-query, recoil
 
+## Installation
+
+```
+git clone https://github.com/RookieAND/RookieAND_BoilerPlate.git
+```
+
 ## Authors [제작자]
 
 - RookieAND\_ (https://github.com/RookieAND)
