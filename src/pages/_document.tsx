@@ -1,16 +1,10 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps
-} from "next/document";
-import { ServerStyleSheet } from "styled-components";
+import type { DocumentContext, DocumentInitialProps } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
   static async getInitialProps(
-    ctx: DocumentContext
+    ctx: DocumentContext,
   ): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
@@ -18,18 +12,20 @@ class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+          enhanceApp: (App) => (props) =>
+            /* eslint-disable react/jsx-props-no-spreading */
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
+        styles: [
           <>
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>
-        )
+          </>,
+        ],
       };
     } finally {
       sheet.seal();
@@ -39,17 +35,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <meta charSet="utf-8" />
-          <meta name="description" content="" />
-          <meta name="keywords" content="" />
-          <meta name="theme-color" content="#00917C" />
-          <meta property="og:title" content="" />
-          <meta property="og:image" content="" />
-          <meta property="og:description" content="" />
-          <meta property="og:url" content="//" />
-        </Head>
+        <Head />
         <body>
+          <div id="modal" />
           <Main />
           <NextScript />
         </body>

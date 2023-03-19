@@ -1,31 +1,46 @@
-import type { AppProps } from "next/app";
-import Head from "next/head";
+import type { AppProps } from 'next/app';
+import { useState } from 'react';
+import { Provider } from 'jotai';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "@styles/globalStyle";
-import { theme } from "@styles/theme";
-import "@assets/fonts/font.css";
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from '@/styles/globalStyle';
+import { theme } from '@/styles/theme';
+import '@/assets/fonts/font.css';
 
-import { useState } from "react";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { RecoilRoot } from "recoil";
+import PageHead from '@/components/layout/page-head';
+import PageLayout from '@/components/layout/page-layout';
+import ModalPortal from '@/components/common/modal-portal';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(new QueryClient());
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnReconnect: false,
+            refetchOnWindowFocus: false,
+          },
+        },
+      }),
+  );
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>RookieAND's BoilerPlate</title>
-        </Head>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <Provider>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <PageHead />
+          <ModalPortal />
+          <PageLayout>
+            {/* eslint-disable react/jsx-props-no-spreading */}
+            <Component {...pageProps} />
+          </PageLayout>
         </ThemeProvider>
-      </RecoilRoot>
+      </Provider>
     </QueryClientProvider>
   );
-}
+};
 
 export default MyApp;
